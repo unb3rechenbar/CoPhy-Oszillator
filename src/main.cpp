@@ -5,7 +5,7 @@ int n = 1000;
 double h = 0.1;
 const int s = 2;
 double Zwischenstufe = 1 / (s + 1);
-double KuttaGewichte[s] = {1/2, 1/2};
+double KuttaGewichte[s] = {1/2, 1/2,1/2};
 
 // Oszillatorvariablen
 double g0 = 0.1;
