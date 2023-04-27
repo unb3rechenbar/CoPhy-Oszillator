@@ -1,0 +1,3 @@
+Wähle das Verfahren (n = 1000) (1) exp. Euler, (2) Runge-Kutter, (3) leap-frog, (4) kontinuierlicher Euler: 
+Kontinuierliches Eulerverfahren, Abbruchbedingung bei x<0.01
+0 0 1

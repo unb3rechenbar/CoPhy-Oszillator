@@ -1,16 +1,18 @@
 #include<iostream>
 
+// Oszillatorvariablen
+double g0 = 0.1;
+double m0 = 1;
+double k0 = 1;
+double w = 1;
+
 // Verfahrenvariablen
 int n = 1000;
 double h = 0.1;
 const int s = 2;
 double Zwischenstufe = 1 / (s + 1);
 double KuttaGewichte[s] = {0.5, 0.5};
-
-// Oszillatorvariablen
-double g0 = 0.1;
-double m0 = 1;
-double k0 = 1;
+double Abbruchkriterium = 0.01 * k0;
 
 // Verfahrenwahlvariable
 int Verfahren = 0;
@@ -20,7 +22,7 @@ double Ergebnisse[3][2];
 
 // Oszillatorfunktionen
 double F(double t) {
-    return 0;
+    return sin(w * t);
 }
 
 double f(double x, double v, double t, double m, double gamma, double k) {
@@ -79,14 +81,13 @@ int main() {
     double x0 = 0;
     double v0 = 1;
 
-    std :: cout << "Wähle das Verfahren (1) exp. Euler, (2) Runge-Kutter, (3) leap-frog:" << std :: endl;
-    std :: cout << 0 << " " << x0 << " " << v0 << std :: endl;
-
+    std :: cout << "Wähle das Verfahren (n = "<< n << ") (1) exp. Euler, (2) Runge-Kutter, (3) leap-frog: " << std :: endl;
     std :: cin >> Verfahren;
 
     switch (Verfahren) {
         case 1:
             std :: cout << "Verfahren: exp. Euler" << std :: endl;
+            std :: cout << 0 << " " << x0 << " " << v0 << std :: endl;
             for (int i = 1; i < n; i++) {
                 std :: cout << i * h << " " << " " << EulerSchrittX(x0,v0,i * h,h,m0,g0,k0) << " " << EulerSchrittV(x0,v0,i * h,h,m0,g0,k0) << std :: endl;
 
@@ -96,6 +97,7 @@ int main() {
             break;
         case 2:
             std :: cout << "Verfahren: Runge-Kutter" << std :: endl;
+            std :: cout << 0 << " " << x0 << " " << v0 << std :: endl;
             for (int i = 1; i < n; i++) {
                 std :: cout << i * h << " " << RungeKuttaX(x0,v0,i * h,h,m0,g0,k0) << " " << RungeKuttaV(x0,v0,i * h,h,m0,g0,k0) << std :: endl;
 
@@ -105,6 +107,7 @@ int main() {
             break;
         case 3:
             std :: cout << "Verfahren: leap-frog" << std :: endl;
+            std :: cout << 0 << " " << x0 << " " << v0 << std :: endl;
             for (int i = 1; i < n; i++) {
                 std :: cout << i * h << " " << leapFrogX(x0,v0,i * h,h,m0,g0,k0) << " "  << leapFrogV(x0,v0,i * h,h,m0,g0,k0) << std :: endl;
 
