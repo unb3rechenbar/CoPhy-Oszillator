@@ -1,18 +1,20 @@
 #include<iostream>
 
 // Oszillatorvariablen
-double g0 = 0.1;
-double m0 = 1;
-double k0 = 1;
-double w = 1;
+const double g0 = 0.1;
+const double m0 = 1;
+const double k0 = 1;
+const double w = 1;
 
 // Verfahrenvariablen
-int n = 1000;
-double h = 0.1;
+const int t = 50;
+const double h = 0.001;
+const int n = t / h;
+
 const int s = 2;
-double Zwischenstufe = 1 / (s + 1);
-double KuttaGewichte[s] = {0.5, 0.5};
-double Abbruchkriterium = 0.01 * k0;
+const double Zwischenstufe = 1 / (s + 1);
+const double KuttaGewichte[s] = {0.5, 0.5};
+const double Abbruchkriterium = 0.01 * k0;
 
 // Verfahrenwahlvariable
 int Verfahren = 0;

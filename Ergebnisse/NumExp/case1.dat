@@ -1,4 +1,4 @@
-Wähle das Verfahren (n = 1000) (1) exp. Euler, (2) Runge-Kutter, (3) leap-frog, (4) kontinuierlicher Euler: 
+Wähle das Verfahren (n = 1000) (1) exp. Euler, (2) Runge-Kutter, (3) leap-frog: 
 Verfahren: exp. Euler
 0 0 1
 0.1  0.1 0.999983
