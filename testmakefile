@@ -1,0 +1,53 @@
+CC = appleg++
+
+CFLAGS_ARM = -g -Wall
+CFLAGS_X86 = -g -Wall
+
+SRC = src
+
+OBJ_ARM = obj/arm
+OBJ_X86 = obj/x86
+
+SRCS = $(wildcard $(SRC)/*.cpp)
+
+OBJS_ARM = $(patsubst $(SRC)/%.cpp, $(OBJ_ARM)/%.o, $(SRCS))
+OBJS_X86 = $(patsubst $(SRC)/%.cpp, $(OBJ_X86)/%.o, $(SRCS))
+
+RM = rm
+
+BIN_ARM = bin/main_arm
+BIN_X86 = bin/main_x86
+
+SUBMITNAME = OszillatorB3.zip
+
+default: build runarm
+build: makedir all
+
+$(BIN_ARM): $(OBJS_ARM)
+	$(CC) $(CFLAGS_ARM) $(OBJS_ARM) -o $@
+
+$(OBJ_ARM)/%.o: $(SRC)/%.cpp
+	$(CC) $(CFLAGS_ARM) -c $< -o $@
+
+.PHONY: makedir
+makedir:
+	@mkdir -p $(OBJ_ARM) $(OBJ_X86) $(BIN_ARM) $(BIN_X86)
+
+.PHONY: all
+all: 
+	$(BIN_ARM) $(BIN_X86)
+
+.PHONY: runarm
+runarm: 
+	$(BIN_ARM)
+
+.PHONY: runx86
+runx86: 
+	$(BIN_X86)
+
+clean:
+	$(RM) -r bin/* obj/*
+
+submit:
+	$(RM) $(SUBMITNAME)
+	zip $(SUBMITNAME) $(BIN)
