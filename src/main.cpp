@@ -1,4 +1,5 @@
 #include<iostream>
+#include<cmath>
 
 // Oszillatorvariablen
 const double g0 = 0.1;
