@@ -2,14 +2,14 @@
 #include<cmath>
 
 // Oszillatorvariablen
-const double g0 = 0.1;
-const double m0 = 1;
-const double k0 = 1;
-const double w = 1;
+const double g0 = 1.0;
+const double m0 = 1.0;
+const double k0 = 1.0;
+const double w = 1.0;
 
 // Verfahrenvariablen
 const int t = 50;
-const double h = 0.001;
+const double h = 0.1;
 const int n = t / h;
 
 const int s = 2;
@@ -79,10 +79,13 @@ double leapFrogV(double x, double v, double t, double dt, double m, double gamma
     return v_neu;
 }
 
+// Adams Bashforth Methode
+
+
 
 int main() {
     double x0 = 0;
-    double v0 = 1;
+    double v0 = 1.0;
 
     std :: cout << "Wähle das Verfahren (n = "<< n << ") (1) exp. Euler, (2) Runge-Kutter, (3) leap-frog: " << std :: endl;
     std :: cin >> Verfahren;
