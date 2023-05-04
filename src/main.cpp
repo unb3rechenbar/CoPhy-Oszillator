@@ -17,12 +17,15 @@ const double Zwischenstufe = 1 / (s + 1);
 const double KuttaGewichte[s] = {0.5, 0.5};
 const double Abbruchkriterium = 0.01 * k0;
 
+// Funktionsspielereien
+#include "header/Funktionsspielereien.hpp"
+
 // Verfahrenwahlvariable
 int Verfahren = 0;
 
 // Oszillatorfunktionen
 double F(double t) {
-    return sin(t);
+    return Weierstraß(t,0.5,0.3);
 }
 
 double f(double x, double v, double t, double m, double gamma, double k) {
@@ -35,7 +38,6 @@ double f(double x, double v, double t, double m, double gamma, double k) {
 
 // Mehrschrittverfahren
 #include "header/Mehrschritt.hpp"
-
 
 
 int main() {
