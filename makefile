@@ -23,3 +23,6 @@ clean:
 submit:
 	$(RM) $(SUBMITNAME)
 	zip $(SUBMITNAME) $(BIN)
+
+.PHONY gp:
+	./$(BIN) | tail -n +3 | gnuplot -p -e "plot '-'"

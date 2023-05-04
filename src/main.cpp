@@ -2,7 +2,7 @@
 #include<cmath>
 
 // Oszillatorvariablen
-const double g0 = 1.0;
+const double g0 = 0.0;
 const double m0 = 1.0;
 const double k0 = 1.0;
 const double w = 1.0;
@@ -20,66 +20,21 @@ const double Abbruchkriterium = 0.01 * k0;
 // Verfahrenwahlvariable
 int Verfahren = 0;
 
-// Ergebnisspeicher
-double Ergebnisse[3][2];
-
 // Oszillatorfunktionen
 double F(double t) {
-    return sin(w * t);
+    return sin(t);
 }
 
 double f(double x, double v, double t, double m, double gamma, double k) {
     return (F(t) - gamma * v - k * x) / m; 
 }
 
-// Euler Methode
-double EulerSchrittX(double x, double v, double t, double dt, double m, double gamma, double k) {
-    double x_neu = x + dt * v;
-    return x_neu;
-}
-double EulerSchrittV(double x, double v, double t, double dt, double m, double gamma, double k) {
-    double v_neu = v + dt * f(x, v, t, m, gamma, k);
-    return v_neu;
-}
 
-// Runge-Kutter Methode
-double RungeKuttaX(double x, double v, double t, double dt, double m, double gamma, double k) {
-    double x_neu[s] = {0};
-    for (int i = 0; i < s; i++) {
-        x_neu[i] = x + KuttaGewichte[i] * dt * v;
-    }
-    double x_sum = 0;
-    for (int i = 0; i < s; i++) {
-        x_sum += KuttaGewichte[i] * x_neu[i];
-    }
-    return x_sum;
-}
-double RungeKuttaV(double x, double v, double t, double dt, double m, double gamma, double k) {
-    double v_neu[s] = {0};
-    for (int i = 0; i < s; i++) {
-        v_neu[i] = v + KuttaGewichte[i] * dt * f(x, v, t, m, gamma, k);
-    }
-    double v_sum = 0;
-    for (int i = 0; i < s; i++) {
-        v_sum += KuttaGewichte[i] * v_neu[i];
-    }
-    return v_sum;
-}
+// Einschrittverfahren
+#include "header/Einschritt.hpp"
 
-
-// leap-frog Methode
-double leapFrogX(double x, double v, double t, double dt, double m, double gamma, double k) {
-    double x_neu = x + (dt / 2) * v;
-    double v_neu = v + dt * f(x, v, t + dt * (1/2), m, gamma, k);
-    x_neu += v_neu * (dt / 2);
-    return x_neu;
-}
-double leapFrogV(double x, double v, double t, double dt, double m, double gamma, double k) {
-    double v_neu = v + dt * f(x, v, t + dt * (1/2), m, gamma, k);
-    return v_neu;
-}
-
-// Adams Bashforth Methode
+// Mehrschrittverfahren
+#include "header/Mehrschritt.hpp"
 
 
 
@@ -87,7 +42,7 @@ int main() {
     double x0 = 0;
     double v0 = 1.0;
 
-    std :: cout << "Wähle das Verfahren (n = "<< n << ") (1) exp. Euler, (2) Runge-Kutter, (3) leap-frog: " << std :: endl;
+    std :: cout << "Wähle das Verfahren (n = "<< n << ") (1) exp. Euler, (2) Runge-Kutter, (3) leap-frog, (4) Verlet Verfahren: " << std :: endl;
     std :: cin >> Verfahren;
 
     switch (Verfahren) {
@@ -120,6 +75,11 @@ int main() {
                 x0 = leapFrogX(x0,v0,i * h,h,m0,g0,k0);
                 v0 = leapFrogV(x0,v0,i * h,h,m0,g0,k0);
             }
+            break;
+        case 4:
+            std :: cout << "Verfahren: Verlet" << std :: endl;
+            std :: cout << 0 << " " << x0 << " " << v0 << std :: endl;
+            VerletVerfahren(&f,x0,v0);
             break;
         default:
             std :: cout << "Verfahren nicht gefunden" << std :: endl;
