@@ -24,5 +24,5 @@ submit:
 	$(RM) $(SUBMITNAME)
 	zip $(SUBMITNAME) $(BIN)
 
-.PHONY gp:
+.PHONY gp: all
 	./$(BIN) | tail -n +3 | gnuplot -p -e "plot '-'"
