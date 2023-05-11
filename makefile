@@ -24,5 +24,11 @@ submit:
 	$(RM) $(SUBMITNAME)
 	zip $(SUBMITNAME) $(BIN)
 
-.PHONY gp: all
-	./$(BIN) | tail -n +3 | gnuplot -p -e "plot '-'"
+.PHONY gpx: all
+	./$(BIN) | tail -n +3 | gnuplot -p -e "set xlabel 'Zeit'; set ylabel 'Ort'; plot '-' using 1:2"
+
+.PHONY gpv: all
+	./$(BIN) | tail -n +3 | gnuplot -p -e "set xlabel 'Zeit'; set ylabel 'Geschwindigkeit'; plot '-' using 1:3"
+
+.PHONY gpe: all
+	./$(BIN) | tail -n +3 | gnuplot -p -e "set xlabel 'Zeit'; set ylabel 'Energie'; plot '-' using 1:4"
