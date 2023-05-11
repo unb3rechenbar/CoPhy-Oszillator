@@ -2,7 +2,7 @@
 #include<cmath>
 
 // Oszillatorvariablen
-const double g0 = 0.3;
+const double g0 = 10;
 const double m0 = 1.0;
 const double k0 = 1.0;
 const double w = 1.0;
