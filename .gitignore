@@ -1,6 +1,6 @@
 *.o
 *.pdf
-bin
+bingit
 
 .DS_Store
 .vscode

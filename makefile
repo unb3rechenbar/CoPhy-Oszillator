@@ -1,4 +1,4 @@
-CC = g++-13
+CC = g++
 CFLAGS = -g -Wall -I /usr/local/include
 SRC = src
 OBJ = obj
