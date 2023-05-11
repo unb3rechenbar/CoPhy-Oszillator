@@ -9,7 +9,7 @@ const double w = 1.0;
 
 // Verfahrenvariablen
 const int t = 50;
-const double h = 0.001;
+const double h = 0.01;
 const int n = t / h;
 
 const int s = 2;
