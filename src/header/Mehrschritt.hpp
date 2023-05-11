@@ -20,6 +20,6 @@ void VerletVerfahren(double (*f)(double,double,double,double,double,double), dou
 
         xErgebnisse[0] = Zwischenspeicher; // Lösche x_n-1 aus nulltem Ergebnisseeintrag und ersetze durch x_n in Zwischenspeicher
 
-        std :: cout << i * h << " " << xErgebnisse[1] << " " << vErgebnisse[1] << std :: endl; // Gebe n-tes Ergebnis aus
+        std :: cout << i * h << " " << xErgebnisse[1] << " " << vErgebnisse[1] << " " << E(xErgebnisse[1],vErgebnisse[1]) << std :: endl; // Gebe n-tes Ergebnis aus
     }
 }
