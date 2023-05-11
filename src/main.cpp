@@ -2,7 +2,7 @@
 #include<cmath>
 
 // Oszillatorvariablen
-const double g0 = 0.0;
+const double g0 = 0.3;
 const double m0 = 1.0;
 const double k0 = 1.0;
 const double w = 1.0;
@@ -61,7 +61,7 @@ int main() {
                 x = EulerSchrittX(x0,v0,i * h,h,m0,g0,k0);
                 v = EulerSchrittV(x0,v0,i * h,h,m0,g0,k0);
 
-                std :: cout << i * h << " " << " " << x << " " << v << " " << E(x,v) << std :: endl;
+                std :: cout << i * h << " " << x << " " << v << " " << E(x,v) << std :: endl;
 
                 x0 = EulerSchrittX(x0,v0,i * h,h,m0,g0,k0);
                 v0 = EulerSchrittV(x0,v0,i * h,h,m0,g0,k0);
