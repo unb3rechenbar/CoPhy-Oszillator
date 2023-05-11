@@ -1,6 +1,6 @@
 *.o
 *.pdf
-bin/
+bin
 
 .DS_Store
 .vscode

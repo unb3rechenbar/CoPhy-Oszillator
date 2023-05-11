@@ -1,5 +1,5 @@
-CC = g++
-CFLAGS = -g -Wall
+CC = g++-13
+CFLAGS = -g -Wall -I /usr/local/include
 SRC = src
 OBJ = obj
 SRCS = $(wildcard $(SRC)/*.cpp)
