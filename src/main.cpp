@@ -9,7 +9,7 @@ const double w = 1.0;
 
 // Verfahrenvariablen
 const int t = 50;
-const double h = 0.1;
+const double h = 0.01;
 const int n = t / h;
 
 const int s = 2;
@@ -25,7 +25,7 @@ int Verfahren = 0;
 
 // Oszillatorfunktionen
 double F(double t) {
-    return Weierstraß(t,0.5,0.3);
+    return 0;
 }
 
 double f(double x, double v, double t, double m, double gamma, double k) {
@@ -50,9 +50,9 @@ int main() {
     switch (Verfahren) {
         case 1:
             std :: cout << "Verfahren: exp. Euler" << std :: endl;
-            std :: cout << 0 << " " << x0 << " " << v0 << std :: endl;
+            std :: cout << 0 << " " << x0 << " " << v0 << " " << m0/2 * pow(v0,2) + 1/2 * k0 * pow(x0,2) << std :: endl;
             for (int i = 1; i < n; i++) {
-                std :: cout << i * h << " " << " " << EulerSchrittX(x0,v0,i * h,h,m0,g0,k0) << " " << EulerSchrittV(x0,v0,i * h,h,m0,g0,k0) << std :: endl;
+                std :: cout << i * h << " " << " " << EulerSchrittX(x0,v0,i * h,h,m0,g0,k0) << " " << EulerSchrittV(x0,v0,i * h,h,m0,g0,k0) << " " << m0 / 2 * pow(EulerSchrittV(x0,v0,i * h,h,m0,g0,k0),2) + k0 / 2 * pow(EulerSchrittX(x0,v0,i * h,h,m0,g0,k0),2) << std :: endl;
 
                 x0 = EulerSchrittX(x0,v0,i * h,h,m0,g0,k0);
                 v0 = EulerSchrittV(x0,v0,i * h,h,m0,g0,k0);
