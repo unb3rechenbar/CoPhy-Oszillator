@@ -2,5 +2,14 @@
 *.pdf
 bin/*
 
+*.log
+*.aux
+*.out
+*.toc
+*.gz
+*.pdf
+*.fdb_latexmk
+*.fls
+
 .DS_Store
 .vscode
