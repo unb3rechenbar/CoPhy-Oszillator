@@ -2,14 +2,14 @@
 #include<cmath>
 
 // Oszillatorvariablen
-const double g0 = 0.3;
+const double g0 = 0;
 const double m0 = 1.0;
 const double k0 = 1.0;
 const double w = 1.0;
 
 // Verfahrenvariablen
 const int t = 50;
-const double h = 0.01;
+const double h = 0.001;
 const int n = t / h;
 
 const int s = 2;
