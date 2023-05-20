@@ -233,41 +233,42 @@
             \end{figure}
             Im Phasendiagramm äußert sich die kleinere Energiedissizipation dadurch, dass die Spirale sehr viel länger braucht, um abzufallen.
 
-        \subparagraph*{Zeitschritt $0.001$}\,
-        \begin{figure}[H]
+            \subparagraph*{Zeitschritt $0.001$}\,
+            \begin{figure}[H]
+                \centering
+                \begin{subfigure}[b]{0.45\textwidth}
+                    \centering
+                    \includegraphics[width=\textwidth]{Bilddateien/LLA1(a)-0001-0-x.png}
+                    \caption{Orts-Zeit-Diagramm}
+                    \label{fig:LLA1(a)-0001-0-x}
+                \end{subfigure}
+                \hfill
+                \begin{subfigure}[b]{0.45\textwidth}
+                    \centering
+                    \includegraphics[width=\textwidth]{Bilddateien/LLA1(a)-0001-0-v.png}
+                    \caption{Geschdingikeits-Zeit-Diagramm}
+                    \label{fig:LLA1(a)-0001-0-v}
+                \end{subfigure}
+            \end{figure}
+            Für $h=0.001$ ist die Amplitude nun nahezu konstant.
+            
+            \begin{figure}[H]
             \centering
             \begin{subfigure}[b]{0.45\textwidth}
                 \centering
-                \includegraphics[width=\textwidth]{Bilddateien/expEulerA1(a)-0001-0-x.png}
-                \caption{Orts-Zeit-Diagramm}
-                \label{fig:expEulerA1(a)-0001-0-x}
+                \includegraphics[width=\textwidth]{Bilddateien/LLA1(a)-0001-E.png}
+                \caption{Energie-Zeit-Diagramm}
+                \label{fig:LLA1(a)-0001-0-E}
             \end{subfigure}
             \hfill
             \begin{subfigure}[b]{0.45\textwidth}
                 \centering
-                \includegraphics[width=\textwidth]{Bilddateien/expEulerA1(a)-0001-0-v.png}
-                \caption{Geschdingikeits-Zeit-Diagramm}
-                \label{fig:expEulerA1(a)-0001-0-v}
+                \includegraphics[width=\textwidth]{Bilddateien/LLA1(a)-0001-0-xv.png}
+                \caption{Ort-Geschdingikeits-Phasenraum}
+                \label{fig:LLA1(a)-0001-0-xv}
             \end{subfigure}
-        \end{figure}
-        
-        \begin{figure}[H]
-        \centering
-        \begin{subfigure}[b]{0.45\textwidth}
-            \centering
-            \includegraphics[width=\textwidth]{Bilddateien/expEulerA1(a)-0001-E.png}
-            \caption{Orts-Zeit-Diagramm}
-            \label{fig:expEulerA1(a)-0001-0-E}
-        \end{subfigure}
-        \hfill
-        \begin{subfigure}[b]{0.45\textwidth}
-            \centering
-            \includegraphics[width=\textwidth]{Bilddateien/expEulerA1(a)-0001-0-xv.png}
-            \caption{Energie-Geschdingikeits-Phasenraum}
-            \label{fig:expEulerA1(a)-0001-0-xv}
-        \end{subfigure}
-    \end{figure}
-    Die Energie variiert hier nur noch sehr wenig, was sich in einer recht idealen Ellipse im Phasenraum äußert.
+            \end{figure}
+            Auch die Energie hat eine sehr viel kleinere Steigung und die Spirale ähnelt sehr einer Ellipse. Allerdings deutet die im Vergleich zum expliziten Eulerverfahren dickeren "Ränder" an, dass dieses immernoch akkurater ist hier.
 
 
         \subaufgabe{}
