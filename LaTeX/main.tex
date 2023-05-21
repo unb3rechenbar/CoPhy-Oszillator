@@ -17,7 +17,7 @@
     \aufgabe{}
         \subaufgabe{}
             \paragraph*{Lösung mit Euler (explizit)}
-                Die folgenden Graphen zeigen je die zeitliche Entwicklung von Ort, Geschwindigkeit und Energie, sowie die Ort-Geschdingikeits-Phasenräume für verschiedene Zeitschritte.     
+                Die folgenden Graphen zeigen je die zeitliche Entwicklung von Ort, Geschwindigkeit und Energie, sowie die Ort-Geschwindigkeit-Phasenräume für verschiedene Zeitschritte.     
 
                 \subparagraph*{Zeitschritt $0.1$}\,
                 \begin{figure}[H]
@@ -32,7 +32,7 @@
                     \begin{subfigure}[b]{0.45\textwidth}
                         \centering
                         \includegraphics[width=\textwidth]{Bilddateien/expEulerA1(a)-01-0-v.png}
-                        \caption{Geschdingikeits-Zeit-Diagramm}
+                        \caption{Geschwindigkeit-Zeit-Diagramm}
                         \label{fig:expEulerA1(a)-01-0-v}
                     \end{subfigure}
                \end{figure}
@@ -50,11 +50,12 @@
                 \begin{subfigure}[b]{0.45\textwidth}
                     \centering
                     \includegraphics[width=\textwidth]{Bilddateien/expEulerA1(a)-01-0-xv.png}
-                    \caption{Ort-Geschdingikeits-Phasenraum}
+                    \caption{Ort-Geschwindigkeit-Phasenraum}
                     \label{fig:expEulerA1(a)-01-0-xv}
                 \end{subfigure}
                 \end{figure}
                 Die Energie führt bei diesem Zeitschritt noch größere Schwingungen aus, bleibt aber im Mittel konstant. Dies man auch gut daran ablesen kann, dass im Phasenraum eine zwar geschlossene, aber unsymmetrische Ellipse zu sehen ist.
+                \newpage
 
                 \subparagraph*{Zeitschritt $0.01$}\,
                 \begin{figure}[H]
@@ -69,7 +70,7 @@
                     \begin{subfigure}[b]{0.45\textwidth}
                         \centering
                         \includegraphics[width=\textwidth]{Bilddateien/expEulerA1(a)-001h-v.png}
-                        \caption{Geschdingikeits-Zeit-Diagramm}
+                        \caption{Geschwindigkeit-Zeit-Diagramm}
                         \label{fig:expEulerA1(a)-001-0-v}
                     \end{subfigure}
                 \end{figure}
@@ -84,6 +85,7 @@
                 \end{subfigure}
                 \end{figure}
                 Auch hier schwingt die Energie, aber mit kleinerer Ampltiude.
+                \newpage
 
                 \subparagraph*{Zeitschritt $0.001$}\,
                 \begin{figure}[H]
@@ -98,7 +100,7 @@
                     \begin{subfigure}[b]{0.45\textwidth}
                         \centering
                         \includegraphics[width=\textwidth]{Bilddateien/expEulerA1(a)-0001-0-v.png}
-                        \caption{Geschdingikeits-Zeit-Diagramm}
+                        \caption{Geschwindigkeit-Zeit-Diagramm}
                         \label{fig:expEulerA1(a)-0001-0-v}
                     \end{subfigure}
                 \end{figure}
@@ -115,41 +117,12 @@
                 \begin{subfigure}[b]{0.45\textwidth}
                     \centering
                     \includegraphics[width=\textwidth]{Bilddateien/expEulerA1(a)-0001-0-xv.png}
-                    \caption{Energie-Geschdingikeits-Phasenraum}
+                    \caption{Energie-Geschwindigkeit-Phasenraum}
                     \label{fig:expEulerA1(a)-0001-0-xv}
                 \end{subfigure}
             \end{figure}
             Die Energie variiert hier nur noch sehr wenig, was sich in einer recht idealen Ellipse im Phasenraum äußert.
-
-        \paragraph{Lösung mit Euler (implizit)}
-            \subparagraph*{Zeitschritt $0.01$}\,
-            \begin{figure}[H]
-                \centering
-                \begin{subfigure}[b]{0.45\textwidth}
-                    \centering
-                    \includegraphics[width=\textwidth]{Bilddateien/impEulerA1(a)-001h-x.png}
-                    \caption{Orts-Zeit-Diagramm}
-                    \label{fig:impEulerA1(a)-001-0-x}
-                \end{subfigure}
-                \hfill
-                \begin{subfigure}[b]{0.45\textwidth}
-                    \centering
-                    \includegraphics[width=\textwidth]{Bilddateien/impEulerA1(a)-001h-v.png}
-                    \caption{Geschdingikeits-Zeit-Diagramm}
-                    \label{fig:impEulerA1(a)-001-0-v}
-                \end{subfigure}
-            \end{figure}
-            
-            \begin{figure}[H]
-            \centering
-            \begin{subfigure}[b]{0.45\textwidth}
-                \centering
-                \includegraphics[width=\textwidth]{Bilddateien/impEulerA1(a)-001h-E.png}
-                \caption{Orts-Zeit-Diagramm}
-                \label{fig:impEulerA1(a)-0001-0-E}
-            \end{subfigure}
-            \end{figure}
-            Das implizite Eulerverfahren zeigt beim gleichen Zeitrschritt minimal kleinere Schwankungen als das explizite.
+            \newpage
 
         \paragraph*{Lösung mit leap-frog}
             \subparagraph*{Zeitschritt $0.1$}\,
@@ -165,7 +138,7 @@
                 \begin{subfigure}[b]{0.45\textwidth}
                     \centering
                     \includegraphics[width=\textwidth]{Bilddateien/LLA1(a)-01-0-v.png}
-                    \caption{Geschdingikeits-Zeit-Diagramm}
+                    \caption{Geschwindigkeit-Zeit-Diagramm}
                     \label{fig:LLA1(a)-01-0-v}
                 \end{subfigure}
             \end{figure}
@@ -183,11 +156,12 @@
             \begin{subfigure}[b]{0.45\textwidth}
                 \centering
                 \includegraphics[width=\textwidth]{Bilddateien/LLA1(a)-01-0-xv.png}
-                \caption{Ort-Geschdingikeits-Phasenraum}
+                \caption{Ort-Geschwindigkeit-Phasenraum}
                 \label{fig:LLA1(a)-01-0-xv}
             \end{subfigure}
             \end{figure}
             Wie aufgrund der Dämpfung des Schwingungen zu erwarten ist, fällt die Enerige mit der Zeit (hat aber periodische kleine lokale Maxima). Im Phasendiagramm äußert sich das in Form einer Spirale.
+            \newpage
 
             \subparagraph*{Zeitschritt $0.01$}\,
             \begin{figure}[H]
@@ -202,7 +176,7 @@
                 \begin{subfigure}[b]{0.45\textwidth}
                     \centering
                     \includegraphics[width=\textwidth]{Bilddateien/LLA1(a)-001-0-v.png}
-                    \caption{Geschdingikeits-Zeit-Diagramm}
+                    \caption{Geschwindigkeit-Zeit-Diagramm}
                     \label{fig:LLA1(a)-001-0-v}
                 \end{subfigure}
             \end{figure}
@@ -220,11 +194,12 @@
             \begin{subfigure}[b]{0.45\textwidth}
                 \centering
                 \includegraphics[width=\textwidth]{Bilddateien/LLA1(a)-001-0-xv.png}
-                \caption{Ort-Geschdingikeits-Phasenraum}
+                \caption{Ort-Geschwindigkeit-Phasenraum}
                 \label{fig:LLA1(a)-001-0-xv}
             \end{subfigure}
             \end{figure}
             Im Phasendiagramm äußert sich die kleinere Energiedissizipation dadurch, dass die Spirale sehr viel länger braucht, um abzufallen.
+            \newpage
 
             \subparagraph*{Zeitschritt $0.001$}\,
             \begin{figure}[H]
@@ -239,7 +214,7 @@
                 \begin{subfigure}[b]{0.45\textwidth}
                     \centering
                     \includegraphics[width=\textwidth]{Bilddateien/LLA1(a)-0001-0-v.png}
-                    \caption{Geschdingikeits-Zeit-Diagramm}
+                    \caption{Geschwindigkeit-Zeit-Diagramm}
                     \label{fig:LLA1(a)-0001-0-v}
                 \end{subfigure}
             \end{figure}
@@ -257,11 +232,12 @@
             \begin{subfigure}[b]{0.45\textwidth}
                 \centering
                 \includegraphics[width=\textwidth]{Bilddateien/LLA1(a)-0001-0-xv.png}
-                \caption{Ort-Geschdingikeits-Phasenraum}
+                \caption{Ort-Geschwindigkeit-Phasenraum}
                 \label{fig:LLA1(a)-0001-0-xv}
             \end{subfigure}
             \end{figure}
             Auch die Energie hat eine sehr viel kleinere Steigung und die Spirale ähnelt sehr einer Ellipse. Allerdings deutet die im Vergleich zum expliziten Eulerverfahren dickeren "Ränder" an, dass dieses immernoch akkurater ist hier.
+            \newpage
 
         \paragraph*{Lösung mit Runge-Kutta (2. Ordnung)}
             \subparagraph*{Zeitschritt $0.1$}\,
@@ -277,7 +253,7 @@
                 \begin{subfigure}[b]{0.45\textwidth}
                     \centering
                     \includegraphics[width=\textwidth]{Bilddateien/RK2A1(a)-01-0-v.png}
-                    \caption{Geschdingikeits-Zeit-Diagramm}
+                    \caption{Geschwindigkeit-Zeit-Diagramm}
                     \label{fig:RK2A1(a)-01-0-v}
                 \end{subfigure}
             \end{figure}
@@ -295,11 +271,12 @@
             \begin{subfigure}[b]{0.45\textwidth}
                 \centering
                 \includegraphics[width=\textwidth]{Bilddateien/RK2A1(a)-01-0-xv.png}
-                \caption{Ort-Geschdingikeits-Phasenraum}
+                \caption{Ort-Geschwindigkeit-Phasenraum}
                 \label{fig:RK2A1(a)-01-0-xv}
             \end{subfigure}
             \end{figure}
             Die Energie oszilliert auch hier noch, aber weniger als beim Euler-Verfahren.
+            \newpage
 
             \subparagraph*{Zeitschritt $0.001$}\,
             \begin{figure}[H]
@@ -314,7 +291,7 @@
                 \begin{subfigure}[b]{0.45\textwidth}
                     \centering
                     \includegraphics[width=\textwidth]{Bilddateien/RK2A1(a)-0001-0-v.png}
-                    \caption{Geschdingikeits-Zeit-Diagramm}
+                    \caption{Geschwindigkeit-Zeit-Diagramm}
                     \label{fig:RK2A1(a)-0001-0-v}
                 \end{subfigure}
             \end{figure}
@@ -331,11 +308,12 @@
             \begin{subfigure}[b]{0.45\textwidth}
                 \centering
                 \includegraphics[width=\textwidth]{Bilddateien/RK2A1(a)-0001-0-xv.png}
-                \caption{Ort-Geschdingikeits-Phasenraum}
+                \caption{Ort-Geschwindigkeit-Phasenraum}
                 \label{fig:RK2A1(a)-0001-0-xv}
             \end{subfigure}
             \end{figure}
             Bei sehr kleinen Zeitschritten von $h=0.001$ ist die Energie bis zur dritten Nachkommastelle konstant und die Ellipse im Phasenraum dementsprechend ideal. Somit ist das Runge-Kutta-Verfahren wie zu erwarten am genauesten.
+            \newpage
 
         \subaufgabe{}
             Wir betrachten nun die numerische Lösung des gedämpften Oszillators für verschiedene Dämpfungskoeffizienten $\gamma$, wobei wir das Verlet-Verfahren nutzen. $\gamma$ ist über $F_{Reibung}(t)=-\gamma\cdot \dot x(t)$ definiert. Als Zeitschrittweite nehmen wir $h=0.01$
@@ -372,6 +350,7 @@
                     \end{subfigure}
                 \end{figure}
                 Für leichte Dämpfung lässt sich der Schwingfall beoachten, der eine harmonische Schwingungen mit exponentiell abfallender Amplitude darstellt. Im Phasendiagramm resultiert dies in einer nicht-symmetrischen Spirale.
+                \newpage
 
                 \subparagraph{Dämpfung $\gamma=0.7$}\,
                 \begin{figure}[H]
@@ -397,6 +376,7 @@
                     \end{subfigure}
                 \end{figure}
                 Auch für $\gamma=0.7$ ist noch der Schwingfall vorhanden, allerdings werden deutlich weniger Schwingungen mit sichtbarer Amplitde ausgeführt; die Spirale im Phasenraumdiagramm konvergiert schneller gegen den Ursprung.
+                \newpage
             
             \paragraph{Aperiodischer Grenzfall}
                 \subparagraph{Dämpfung $\gamma=1.5$}\,
@@ -423,6 +403,7 @@
                     \end{subfigure}
                 \end{figure}
                 Im Aperiodischen Grenzfall kann der Oszillator nach Theorie höchstens noch einen Nulldurchlauf haben. Da dies hier vorkommt, ist eben dieser Fall zu vermuten. Das Phasendiagramm zeigt weiter eine Spirale, die nocht stärker verzerrt ist und gegen den Ursprung schneller konvergiert als zuvor.
+                \newpage
 
             \paragraph{Kriechfall}
                 \subparagraph{Dämpfung $\gamma=3$}\,
@@ -449,8 +430,9 @@
                     \end{subfigure}
                 \end{figure}
                Für $\gamma=3$ geht die Auslenkung wieder langsamer gegen Null und im Phasendiagramm ist die Spirale fast nicht mehr zu erkennen. Dies liegt vermutlich daran, dass die Geschwindigkeit kaum variiert für kleine Zeiten und so die Phasenkurve $x(v)$ fast denselben Weg wieder beschreitet.
+               \newpage
 
-               \subparagraph{Dämpfung $\gamma=3$}\,
+               \subparagraph{Dämpfung $\gamma=10$}\,
                \begin{figure}[H]
                    \centering
                    \begin{subfigure}[b]{0.45\textwidth}
