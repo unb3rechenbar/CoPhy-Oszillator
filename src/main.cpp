@@ -2,10 +2,10 @@
 #include<cmath>
 
 // Oszillatorvariablen
-const double g0 = 0;
+const double g0 = 0.5;
 const double m0 = 1.0;
 const double k0 = 1.0;
-const double w = 1.0;
+const double w = 2.0;
 
 // Verfahrenvariablen
 const int t = 50;
@@ -25,7 +25,7 @@ int Verfahren = 0;
 
 // Oszillatorfunktionen
 double F(double t) {
-    return 0;
+    return sin(w * t);
 }
 
 double f(double x, double v, double t, double m, double gamma, double k) {
@@ -50,7 +50,7 @@ int main() {
     double x = 0;
     double v = 0;
 
-    std :: cout << "Wähle das Verfahren (n = "<< n << ") (1) exp. Euler, (2) Runge-Kutter, (3) leap-frog, (4) Verlet Verfahren: " << std :: endl;
+    std :: cout << "Wähle das Verfahren (n = "<< n << ") (1) exp. Euler, (2) Runge-Kutter, (3) leap-frog, (4) Verlet Verfahren, (5) xMax: " << std :: endl;
     std :: cin >> Verfahren;
 
     switch (Verfahren) {
@@ -98,6 +98,22 @@ int main() {
             std :: cout << 0 << " " << x0 << " " << v0 << std :: endl;
             VerletVerfahren(&f,x0,v0);
             break;
+        case 5: {
+            double xmax = 0;
+            for (int i = 1; i < n; i++) {
+                x = RungeKuttaX(x0,v0,i * h,h,m0,g0,k0);
+                v = RungeKuttaV(x0,v0,i * h,h,m0,g0,k0);
+
+                if (abs(x) > xmax) {
+                    xmax = abs(x);
+                    std :: cout << i * h << " " << x << " " << v << " " << E(x,v) << std :: endl;
+                }
+
+                x0 = RungeKuttaX(x0,v0,i * h,h,m0,g0,k0);
+                v0 = RungeKuttaV(x0,v0,i * h,h,m0,g0,k0);
+            }
+            break;
+        }
         default:
             std :: cout << "Verfahren nicht gefunden" << std :: endl;
             break;
