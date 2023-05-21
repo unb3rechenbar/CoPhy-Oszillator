@@ -5,7 +5,7 @@
 const double g0 = 0.5;
 const double m0 = 1.0;
 const double k0 = 1.0;
-const double w = 2.0;
+const double w = 0.47;
 
 // Verfahrenvariablen
 const int t = 50;
