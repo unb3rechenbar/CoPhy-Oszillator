@@ -1,0 +1,81 @@
+\documentclass{article}
+
+\usepackage{kern}
+
+\geometry{
+    a4paper, 
+    twoside=true, 
+    bindingoffset=1.0471975512cm, 
+    left=3.5cm, 
+    right=3.5cm, 
+    top=3.5cm, 
+    bottom=3.5cm
+}
+
+\chead{\textit{Tom Folgmann}}
+
+%% ---- Blattauswahl ---- %%
+
+\ofoot{Blatt i}
+\def\Datum{xx.yy.2023}
+
+%% ---- Kursauswahl ---- %%
+
+% \ihead{\textbf{Funktionentheorie}\\\Datum}                                % Funktionentheorie
+% \ihead{\textbf{Integrierter Kurs 4:\\Experimentalphysik II}\\\Datum}      % IK4 Experimentalphysik
+% \ihead{\textbf{Integrierter Kurs 4:\\Theoretische Physik II}\\\Datum}     % IK4 Theoretische Physik
+% \ihead{\textbf{Mathematische Grundlagen\\der Quantenmechanik}\\\Datum}    % Mathematische Grundlagen der Quantenmechanik
+% \ihead{\textbf{Numerik gewöhnlicher\\Differentialgleichungen}\\\Datum}    % Numerik gewöhnlicher Differentialgleichungen
+% \ihead{\textbf{Graphical Methods:\\Games,Visualiszation,\\Film}\\\Datum}  % Computergraphics
+\ihead{\textbf{Computerphysik I}\\\Datum}                                 % Computerphysik
+
+%% ---- Tutorauswahl ---- %%
+
+\cfoot{Tutor: \textit{Paul}}            % Funktionentheorie
+% \cfoot{Tutor: \textit{Tobias}}          % IK4 Experimentalphysik
+% \cfoot{Tutor: \textit{Wolf-Rüdiger}}    % IK4 Theoretische Physik
+% \cfoot{Tutor: \textit{Patrick}}         % Mathematische Grundlagen der Quantenmechanik
+% \cfoot{Tutor: \textit{Michael\\Junk}}   % Numerik gewöhnlicher Differentialgleichungen
+% \cfoot{Tutor: \textit{Patrick}}         % Computergraphics
+\cfoot{Tutor: \textit{??}}              % Computerphysik
+
+
+
+
+\begin{document}
+    \aufgabe{}
+        \subaufgabe{}
+            Sei die Kraft auf ein Teilchen durch die Funktion
+            \[F_s:=\fdef{\sum_{i\in[s]}\frac{1}{\dabs{r - R_i}{2}}\cdot (r-R_i)}{r\in\R^3}\]
+            gegeben, wobei $R$ das \emph{Magnetorttupel} mit Vektoren $R_i\in\R^3$ ist. Die Bewegungsgleichung ist dann gegeben durch $m\cdot r''(t) = (F_s\circ r)(t)$. Für $s = 3$ erhalten wir in der Auswertung für einen Weg $r:\R\to\R^3$ die rechte Seite $F$ mit der Definition
+            \[f:=\fdef{\frac{1}{m}\cdot\sum_{i\in[3]}\frac{x-R_i}{\dabs{x-R_i}{2}}}{(t,x)\in\R\times\R^3}.\]
+            Die Reduktion der Ordnung ergibt mit
+            \[v(t):=\begin{pmatrix}
+                x(t)\\x'(t)
+            \end{pmatrix},\quad v'(t)=\begin{pmatrix}
+                v_2^*(t)\\f(t,v_1^*(t))
+            \end{pmatrix}.\]
+            Damit ergibt sich die vektorwertige rechte Seite
+            \[F:=\fdef{\begin{pmatrix}
+                x_2\\f(t,x_1)
+            \end{pmatrix}}{(t,x)\in\R\times\R^3}\implies F(t,x(t)) = \begin{pmatrix}
+                x'(t)\\\frac{1}{m}\cdot\sum_{i\in[3]}\frac{x(t)-R_i}{\dabs{x(t)-R_i}{2}}
+            \end{pmatrix}\]
+            für eine Lösung $x:\R\to(\R^2)^2$. Im Reibungs- und Federfall erweitere $f$ derart, daß beide berücksichtigt werden:
+            \[\tilde f:=\fdef{f(t,x_1) - \gamma\cdot x_2 - k\cdot x_1}{(t,x)\in\R\times(\R^2)^2}.\]
+            Damit ergibt sich die neue rechte Seite
+            \[\tilde F:=\fdef{\begin{pmatrix}
+                x_1\\\tilde f(t,x_1)
+            \end{pmatrix}}{(t,x)\in\R\times(\R^2)^2}.\]
+
+        \subaufgabe{}
+        
+        \subaufgabe{}
+
+        \subaufgabe{}
+
+        \subaufgabe{}
+
+        \subaufgabe{}
+        
+\end{document}

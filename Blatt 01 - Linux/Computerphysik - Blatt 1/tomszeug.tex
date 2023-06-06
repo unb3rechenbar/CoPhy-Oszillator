@@ -1,0 +1,128 @@
+\usepackage{calrsfs}
+\usepackage{thmtools}
+\usepackage[usenames,dvipsnames]{xcolor}
+\declaretheoremstyle[
+    			headfont=\bfseries\sffamily\color{black!70!black}, bodyfont=\normalfont,
+    			mdframed={
+       				linewidth=1pt,
+        			rightline=false, topline=false, bottomline=false,
+    			}
+			]{Begruendungsbox}
+\declaretheoremstyle[
+    			headfont=\bfseries\sffamily\color{black!70!black}, bodyfont=\normalfont,
+    			mdframed={
+       				linewidth=1pt,
+        			rightline=false, topline=false, bottomline=false,
+    			}
+			]{Erinnerungsbox}
+\declaretheoremstyle[
+    			headfont=\bfseries\sffamily\color{black!70!black}, bodyfont=\normalfont, numbered=no,
+    			mdframed={
+       				linewidth=false,
+        			rightline=false, topline=false, bottomline=false,
+    			}
+			]{Zusammenfassungsbox}
+\declaretheoremstyle[
+    			headfont=\bfseries\sffamily\color{black!70!black}, bodyfont=\normalfont, numbered=no,
+    			mdframed={
+       				linewidth=0.5pt,
+        			rightline=0.5pt, topline=false, bottomline=false,
+    			}
+			]{Voraussetzungsbox}
+\declaretheorem[style=Voraussetzungsbox, name=Voraussetzung]{vrr}
+\declaretheorem[style=Zusammenfassungsbox, name=Zusammenfassen]{zsmfs}
+\newenvironment{Voraussetzung}{\begin{vrr}}{\end{vrr}}
+\newenvironment{Zusammenfassen}{\begin{zsmfs}}{\end{zsmfs}}
+\declaretheorem[style=Erinnerungsbox, name=Vermutung]{verm}
+\declaretheorem[style=Begruendungsbox, name=Begründung]{begr}
+\newenvironment{begruendung}{\begin{begr}}{\end{begr}}
+
+\newcommand{\nbra}[1]{\left(#1\right)}
+\newcommand{\nsqbra}[1]{\left[#1\right]}
+\newcommand{\nset}[1]{\left\{{#1}\right\}}
+\newcommand{\lfdef}[2]{\begin{pmatrix}{#1}\\{#2}\end{pmatrix}}
+\newcommand{\fdef}[2]{\nbra{#1}_{#2}}
+\newcommand{\dabs}[2]{\abs{\abs{#1}}_{#2}}
+\newcommand{\Abb}[2]{\text{Abb}\nbra{#1,#2}}
+\newcommand{\postref}[1]{\nsqbra{\rightarrow{#1}}}
+\newcommand{\anm}[1]{[\textit{#1}]}
+
+\declaretheorem[style=Erinnerungsbox, name=Erinnerung]{Erinnerungsdef}
+\newenvironment{Erinnerung}{\begin{Erinnerungsdef}}{\end{Erinnerungsdef}}
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\newcommand{\diff}[4]{%
+			\ifthenelse{\isempty{#2}}
+				{\ifthenelse{\isempty{#3}}
+					{\ifthenelse{\isempty{#4}}
+						{\ensuremath{d#1}}
+						{\ensuremath{d^{#4}#1}}}
+					{\ifthenelse{\isempty{#4}}
+						{\ensuremath{d#1\nbra{#3}}}
+						{\ensuremath{d^{#4}#1\nbra{#3}}}}}
+				{\ifthenelse{\isempty{#3}}
+					{\ifthenelse{\isempty{#4}}
+						{\ensuremath{d#1()\nbra{#2}}}
+						{\ensuremath{d^{#4}#1()\nbra{#2}}}}
+					{\ifthenelse{\isempty{#4}}
+						{\ensuremath{d#1\nbra{#3}\nbra{#2}}}
+						{\ensuremath{d^{#4}#1\nbra{#3}\nbra{#2}}}}}%
+		}
+\newcommand{\Diff}[4]{%
+			\ifthenelse{\isempty{#3}}
+				{\ifthenelse{\isempty{#4}}
+					{\ensuremath{\text{D}_{#2}#1}}
+					{\ensuremath{\text{D}_{#2}^{#4}#1}}}
+				{\ifthenelse{\isempty{#4}}
+					{\ensuremath{\text{D}_{#2}#1\nbra{#3}}}
+					{\ensuremath{\text{D}_{#2}^{#4}#1\nbra{#3}}}}%
+		}
+\newcommand{\pdiff}[4]{%
+			\ifthenelse{\isempty{#3}}
+				{\ifthenelse{\isempty{#4}}
+					{\ensuremath{\partial_{#2}#1}}
+					{\ensuremath{\partial_{#2}^{#4}#1}}}
+				{\ifthenelse{\isempty{#4}}
+					{\ensuremath{\partial_{#2}#1\nbra{#3}}}
+					{\ensuremath{\partial_{#2}^{#4}#1\nbra{#3}}}}%
+		}
+\newcommand{\scpr}[2]{\left\langle #1,#2\right\rangle}
+\DeclareMathOperator{\mal}{mal}
+\DeclareMathOperator{\plus}{plus}
+\renewcommand{\neg}{\text{neg}}
+\DeclareMathOperator{\inv}{inv}
+
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+\newenvironment{beh}{\noindent\textbf{\textit{Behauptung.}}}{}
+\DeclareMathOperator{\laplace}{\text{lap}}
+\newcommand{\Null}[1]{0_{#1}}
+
+\newcommand{\gint}[1]{\int_{[#1]}}
+\newcommand{\dint}[2][]{%
+				\ifthenelse{\isempty{#2}}{\,d#2}{\,d_{#1}#2}
+				}%
+\newcommand{\Ell}{\mathcal L}
+\newcommand{\Real}[1]{\text{Re}\nbra{#1}}
+\newcommand{\Imag}[1]{\text{Im}\nbra{#1}}
+
+\newcommand{\Mengeninklusion}[2]{
+	\begin{itemize}
+		\item[\enquote{$\subseteq$}] #1
+		\item[\enquote{$\supseteq$}] #2
+	\end{itemize}}
+ \newcommand{\sAlgebra}[1]{{\sigma}\Mengenschriftdesign{Algebra}\nbra{#1}}
+
+\usepackage{xargs}
+\newcounter{ex}
+			\newcounter{subex}[ex]
+			\newcounter{subsubex}[subex]
+			
+			\setcounter{ex}{1}
+ \newcommandx{\aufgabe}[1][1={}]{\ifnumgreater{\theex}{1}{\newpage}{}
+				\ifthenelse{\isempty{#1}}	
+					{\section*{Aufgabe \theex}\label{ex:\theex}\stepcounter{ex}}
+					{\section*{Aufgabe #1}\label{ex:#1}}}
+\newcommandx{\subaufgabe}[1][1={}]{\ifthenelse{\isempty{#1}}
+					{\stepcounter{subex}\subsection*{(\alph{subex})}\label{subex:\theex-\thesubex}}
+					{\stepcounter{subex}\subsection*{(#1)}\label{subex:\theex-#1}}}
