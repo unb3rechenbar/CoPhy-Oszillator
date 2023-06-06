@@ -1,10 +1,12 @@
 #include<iostream>
 #include<cmath>
 
-// Grundstruktur
+/*
+    Führe die Grundstruktur als R^2 Tupel ein und definiere alle nötigen Operatoren der R^2 Vektoren. 
+*/
 struct R2{
-    int x;
-    int y;
+    double x;
+    double y;
 
     // Punktweise Multiplikation
     R2 operator*(const R2& other) const {
@@ -14,13 +16,14 @@ struct R2{
         return result;
     }
 
-    // Punktweise Multiplikation mit Skalar
+    // Punktweise Multiplikation mit Skalar von rechts
     R2 operator*(const double& other) const {
         R2 result;
         result.x = x * other;
         result.y = y * other;
         return result;
     }
+
 
     // Punktweise Addition
     R2 operator+(const R2& other) const {
@@ -45,6 +48,34 @@ struct R2{
         result.y = y / other.y;
         return result;
     }
+
+    // Division durch Skalar
+    R2 operator/(const double& other) const {
+        R2 result;
+        result.x = x / other;
+        result.y = y / other;
+        return result;
+    }
+
+    /*
+        Definition derselben Operatoren in abgekürzter Schreibweise
+    */
+    void operator*=(const R2& other) {
+        x *= other.x;
+        y *= other.y;
+    }
+    void operator+=(const R2& other) {
+        x += other.x;
+        y += other.y;
+    }
+    void operator-=(const R2& other) {
+        x -= other.x;
+        y -= other.y;
+    }
+    void operator/=(const double& other) {
+        x /= other;
+        y /= other;
+    }
 };
 
 // Skalarprodukt auf R^2
@@ -56,31 +87,70 @@ double scpr(R2 a, R2 b) {
 /*
     Definiere die Lösungsstruktur. Sie ist dabei von der Form (u(t),u'(t))\in(\R^2)^2. 
 */
-struct Lsng {
+typedef struct {
     R2 u;
     R2 du;
-};
+} Lsng;
+typedef struct {
+    R2 du;
+    R2 ddu;
+} dLsng;
 
-// Importiere Systemgleichungen
-#include "header/Systemgleichungen.hpp"
-
-// Importiere Verfahren
-#include "header/Verfahren.hpp"
-
-// Startwerte
+/*
+    Initialisiere die Lösung. Beachte dabei, daß die Ortskomponente zur Geschwindigkeitskomponente um h/2 verschoben ist. Die erste Iteration übernimmt für die Geschwindigkeit also Euler. 
+*/
 Lsng L = {
-    .u = {1, 2},
-    .du = {3, 4}
+    .u = {1.0, 2.0},
+    .du = {3.0, 4.0}
 };
 
+/*
+    Setze die Startwerte der Lösungsverfahren und importiere sie. 
+*/
 const double T = 10;
 const double wh = 0.01;
 const int n = (int) T/wh;
 const double h = T/n;
 
+// Importiere Verfahren
+#include "header/Verfahren.hpp"
+
+
+/*
+    Initialisiere die Systemgleichungen. Definiere zunächst Magnetanzahl und Orte.
+*/
+const int s = 2; // Anzahl der Magnete
+const R2 Magnetorte[s] = {{0,0}, {1,1}}; // Orte der Magnete
+const double m = 1; // Masse des Pendels
+#include "header/Systemgleichungen.hpp"
+
 
 int main() {
     printf("Hello World\n");
 
-    printf("c = (%d, %d)\n", c.x, c.y);
+    /*
+        Löse die Systemgleichungen mithilfe von leapfrog und schreibe in die Datei
+        ../data/leapfrogsol.dat
+    */
+    FILE *datei = fopen("./data/leapfrogsol.dat", "w");
+    if (datei == NULL) {
+        printf("Datei konnte nicht geöffnet werden.\n");
+        return 1;
+    }
+
+    // leapfrog Verschiebung durch Euler initialisieren:
+    L.du += F(0, &L).ddu * h/2;
+
+    // Initiale Werte schreiben
+    fprintf(datei, "0\t%g\t%g\t\t\n", L.u.x, L.u.y);
+    fprintf(datei, "%g\t\t\t%g\t%g\n", h/2, L.du.x, L.du.y);
+
+    // Lösung berechnen und in Datei schreiben
+    for (int i = 1; i < n; i++) {
+        leapfrogstep(i*h, &L, F);
+        fprintf(datei, "%f\t%f\t%f\t\t\n", i*h, L.u.x, L.u.y);
+        fprintf(datei, "%f\t\t\t%f\t%f\n", i * h + h/2, L.du.x, L.du.y);
+    }
+
+    fclose(datei);
 }
