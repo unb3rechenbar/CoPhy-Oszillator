@@ -17,7 +17,7 @@
 %% ---- Blattauswahl ---- %%
 
 \ofoot{Blatt i}
-\def\Datum{xx.yy.2023}
+\def\Datum{19.06.2023}
 
 %% ---- Kursauswahl ---- %%
 
@@ -49,7 +49,7 @@
             \[F_s:=\fdef{\sum_{i\in[s]}\frac{1}{\dabs{r - R_i}{2}}\cdot (r-R_i)}{r\in\R^3}\]
             gegeben, wobei $R$ das \emph{Magnetorttupel} mit Vektoren $R_i\in\R^3$ ist. Die Bewegungsgleichung ist dann gegeben durch $m\cdot r''(t) = (F_s\circ r)(t)$. Für $s = 3$ erhalten wir in der Auswertung für einen Weg $r:\R\to\R^3$ die rechte Seite $F$ mit der Definition
             \[f:=\fdef{\frac{1}{m}\cdot\sum_{i\in[3]}\frac{x-R_i}{\dabs{x-R_i}{2}}}{(t,x)\in\R\times\R^3}.\]
-            Die Reduktion der Ordnung ergibt mit
+            Die Reduktion der Ordnung ergibt
             \[v(t):=\begin{pmatrix}
                 x(t)\\x'(t)
             \end{pmatrix},\quad v'(t)=\begin{pmatrix}
@@ -69,11 +69,33 @@
             \end{pmatrix}}{(t,x)\in\R\times(\R^2)^2}.\]
 
         \subaufgabe{}
+            Für die Magnetpositionen wählen wir den Einheitskreis um $0_{\R^2}$ gemäß $\mcK_{1,0_{\R^2}}(x):=\bbra{\Phi({\exp}(\cmath\cdot\varphi))}_{\varphi\in(-\pi,\pi)}$ für $\Phi:=\bbra{\Real(z),\Imag(z)}_{z\in\C}$ als Konstruktionsfunktion. Um den Masseschwerpunkt in den Ursprung $(0,0)$ zu legen, Zerlegen wir $(-\pi,\pi)$ in Intervalle gleichen Durchmessers und finden $\varphi_1:=0$, $\varphi_2:=\pi/3$ und $\varphi_3:=-\pi/3$. Somit ist das Magnetorttupel gegeben durch
+            \[
+                R:=\Bbra{\bbra{\cos(\varphi_i),\sin(\varphi_i)}}_{i\in[3]}.
+            \]
+            Damit ergeben sich konkret die Orte $R_1 = (0,1)$, $R_2 = (\sqrt{3}/2,-1/2)$ und $R_3 = (-\sqrt{3}/2,-1/2)$ und somit die folgende optische Verteilung:
+            \begin{figure}[H]
+                \centering
+                \begin{tikzpicture}
+                    \draw[->] (-1.5,0) -- (1.5,0) node[right] {$x$};
+                    \draw[->] (0,-1.5) -- (0,1.5) node[above] {$y$};
+
+                    \draw[loosely dotted] (0,0) circle (1cm);
+
+                    \draw[red,->] (0,0) -- (0,1) node[above left] {$R_1$};
+                    \draw[red,->] (0,0) -- (0.866,-0.5) node[below right] {$R_2$};
+                    \draw[red,->] (0,0) -- (-0.866,-0.5) node[below left] {$R_3$};
+                \end{tikzpicture}
+                \caption{Magnetorttupel im $\R^2$ Anschauungsraum.}
+            \end{figure}
+
         
         \subaufgabe{}
+            Wir verwenden die bestimmten Gleichungen gemäß Aufgabenteil (a) in Kombination mit dem Lösungsalgorithmus \enquote{Leap Frog} und \enquote{Velocity Verlet}. 
 
         \subaufgabe{}
-
+            Die Implementierung ist unter \href{https://github.com/unb3rechenbar/ComputerPhysik-I-Projekte.git}{Github} im Ordner \enquote{Blatt 04 - Projekt 2 (Magnetpendel)/Simulation} vorzufinden. 
+ 
         \subaufgabe{}
 
         \subaufgabe{}
