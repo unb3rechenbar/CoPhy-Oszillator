@@ -121,6 +121,8 @@ const double h = T/n;
 const int s = 3; // Anzahl der Magnete
 const R2 Magnetorte[s] = {{0.5,-0.5}, {0,0.5}, {-0.5,-0.5}}; // Orte der Magnete
 const double m = 1; // Masse des Pendels
+const double k = 0.1; // Federkonstante
+const double g = 0.1; // Dämpfungsparameter
 #include "header/Systemgleichungen.hpp"
 
 
