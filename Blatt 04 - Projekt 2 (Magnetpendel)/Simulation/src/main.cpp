@@ -179,8 +179,5 @@ int main() {
         }
     }
 
-    // Lösung berechnen und in Datei schreiben
-    
-
     fclose(datei);
 }
