@@ -100,15 +100,15 @@ typedef struct {
     Initialisiere die Lösung. Beachte dabei, daß die Ortskomponente zur Geschwindigkeitskomponente um h/2 verschoben ist. Die erste Iteration übernimmt für die Geschwindigkeit also Euler. 
 */
 Lsng L = {
-    .u = {0.0, 0.0},
-    .du = {0.0, 0.0}
+    .u = {0.0, 1.5},
+    .du = {-15.0, 0.0}
 };
 
 /*
     Setze die Startwerte der Lösungsverfahren und importiere sie. 
 */
-const double T = 10;
-const double wh = 0.01;
+const double T = 100;
+const double wh = 0.001;
 const int n = (int) T/wh;
 const double h = T/n;
 
@@ -125,8 +125,11 @@ const R2 Magnetorte[s] = {
     {-0.866,-0.5}
 }; // Orte der Magnete
 const double m = 1; // Masse des Pendels
-const double k = 0.1; // Federkonstante
-const double g = 0.1; // Dämpfungsparameter
+const double k = 0.5; // Federkonstante
+const double g = 0.2; // Dämpfungsparameter
+
+const double z = 0.25; // Abhebung von Magnettisch
+
 #include "header/Systemgleichungen.hpp"
 
 
@@ -140,11 +143,13 @@ int main() {
     */
     int Verfahren = 0;
     printf("Wähle das Lösungsverfahren. Wähle (1) LeapFrog, (2) VelocityVerlet.\n");
-    scanf("%d", &Verfahren);
+    // scanf("%d", &Verfahren);
+
+    Verfahren = 2;
 
     switch (Verfahren) {
         case 1: {
-            datei = fopen("./data/leapfrogsol.dat", "w");
+            datei = fopen("/tmp/data/Magnetpendel/leapfrogsol.dat", "w");
 
             // leapfrog Verschiebung durch Euler initialisieren:
             L.du += F(0, &L).ddu * h/2;
@@ -161,7 +166,7 @@ int main() {
             break;
         }
         case 2: {
-            datei = fopen("./data/velocityverletsol.dat", "w");
+            datei = fopen("/tmp/data/Magnetpendel/velocityverletsol.dat", "w");
 
             // Eulerstarter
             Lsng pastL = L;

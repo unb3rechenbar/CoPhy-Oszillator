@@ -1,8 +1,7 @@
 // Normdefinition
 double pNorm(R2 v) {
-    return sqrt(pow(v.x,2) + pow(v.y, 2));
+    return sqrt(pow(v.x,2) + pow(v.y, 2) + pow(z,2));
 }
-
 
 /* 
     Definiere die Vektorkomponenten des zweidimensionalen DGPs.
@@ -12,10 +11,11 @@ R2 v1(double t, Lsng* L) {
 }
 
 R2 v2(double t, Lsng* L) {
-    R2 u2;
+    R2 u2 = {0.0,0.0};
     for (int i = 0; i < s; i++) {
-        u2 += (L->u - Magnetorte[i]) / pow(pNorm(L->u - Magnetorte[i]), 3) - L->du * g - L->u * k;
+         u2 += ((L->u - Magnetorte[i]) / pow(pNorm(L->u - Magnetorte[i]), 3)) * (-3) - L->u * k - L->du * g;
     }
+
     u2 /= m; // Division durch Masse
     return u2;
 }
