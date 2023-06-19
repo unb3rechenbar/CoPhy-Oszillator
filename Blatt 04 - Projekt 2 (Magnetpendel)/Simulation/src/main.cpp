@@ -132,6 +132,15 @@ const double z = 0.25; // Abhebung von Magnettisch
 
 #include "header/Systemgleichungen.hpp"
 
+/*
+    Definiere das Gitter, auf welchem das Pendel simuliert werden soll, um die Konvergenzorte zu identifizieren.
+*/
+const int G = 1;
+const int rG = 10; // Radius des Gitters
+const int dG = 2*rG + 1; // Durchmesser des Gitters
+const double mind = 0.5; // Mindestabstand der Konvergenzorte
+int found = 0; // Flag, ob ein Konvergenzort gefunden wurde
+
 
 int main() {
     printf("--- Magnetpendelsimulation ---\n");
@@ -181,6 +190,52 @@ int main() {
             for (int i = 1; i < n; i++) {
                 verletstep(i*h, &L, &pastL, F);
                 fprintf(datei, "%g\t%g\t%g\t%g\t%g\n", i*h, L.u.x, L.u.y, L.du.x, L.du.y);
+            }
+            break;
+        }
+        case 3: {
+            datei = fopen("/tmp/data/Magnetpendel/konvergenz.dat", "w");
+
+            /*
+                Nutze hier explizit keine bedingte Schleife, sodaß möglicherweise rausdriftende Lösungen nicht zu Endlosschleifen führen.
+            */
+
+            for (int i = 0; i < G - 1; i++) {
+                for (int j = 0; j < G - 1; j++) {
+                    // Ordne Lösungsgitter zu
+                    L.u.x = (double)dG / G * i - rG;
+                    L.u.y = (double)dG / G * j - rG;
+
+                    L.du.x = 0.0;
+                    L.du.y = 0.0;
+
+                    // Speichere Startwerte
+                    Lsng startL = L;
+
+                    // Eulerstarter
+                    Lsng pastL = L;
+                    L.u = pastL.u + pastL.du * h/2;
+                    L.du = pastL.du + F(0, &L).ddu * h/2;
+
+                    // Iteriere über die Zeitstützen und prüfe Magnetabstände
+                    for (int k = 1; k < n; k++) {
+                        verletstep(k * h, &L, &pastL, F);
+
+                        printf("i = %d, j = %d, k = %d\n", i, j, k);
+
+                        for (int l = 0; l < s; l++) {
+                            if (pzNorm(L.u - Magnetorte[l]) < mind) {
+                                fprintf(datei, "%g\t%g\t%g\t%g\t%g\t%d\n", i*h, startL.u.x, startL.u.y, startL.du.x, startL.du.y, l);
+                                found = 1;
+                                break;
+                            }
+                        }
+                        if (found) {
+                            found = 0;
+                            break;
+                        }
+                    }
+                }
             }
             break;
         }

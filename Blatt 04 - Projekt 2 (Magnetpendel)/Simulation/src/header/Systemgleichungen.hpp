@@ -1,5 +1,5 @@
 // Normdefinition
-double pNorm(R2 v) {
+double pzNorm(R2 v) {
     return sqrt(pow(v.x,2) + pow(v.y, 2) + pow(z,2));
 }
 
@@ -13,7 +13,7 @@ R2 v1(double t, Lsng* L) {
 R2 v2(double t, Lsng* L) {
     R2 u2 = {0.0,0.0};
     for (int i = 0; i < s; i++) {
-         u2 += ((L->u - Magnetorte[i]) / pow(pNorm(L->u - Magnetorte[i]), 3)) * (-3) - L->u * k - L->du * g;
+         u2 += ((L->u - Magnetorte[i]) / pow(pzNorm(L->u - Magnetorte[i]), 3)) * (-3) - L->u * k - L->du * g;
     }
 
     u2 /= m; // Division durch Masse
