@@ -107,7 +107,7 @@ Lsng L = {
 /*
     Setze die Startwerte der Lösungsverfahren und importiere sie. 
 */
-const double T = 100;
+const double T = 200;
 const double wh = 0.001;
 const int n = (int) T/wh;
 const double h = T/n;
@@ -119,11 +119,8 @@ const double h = T/n;
     Initialisiere die Systemgleichungen. Definiere zunächst Magnetanzahl und Orte.
 */
 const int s = 3; // Anzahl der Magnete
-const R2 Magnetorte[s] = {
-    {0,1}, 
-    {0.866,-0.5}, 
-    {-0.866,-0.5}
-}; // Orte der Magnete
+R2 Magnetorte[s]; // Orte der Magnete initialisieren
+
 const double m = 1; // Masse des Pendels
 const double k = 0.5; // Federkonstante
 const double g = 0.2; // Dämpfungsparameter
@@ -135,26 +132,43 @@ const double z = 0.25; // Abhebung von Magnettisch
 /*
     Definiere das Gitter, auf welchem das Pendel simuliert werden soll, um die Konvergenzorte zu identifizieren.
 */
-const int G = 1;
-const int rG = 10; // Radius des Gitters
+const int G = 500;
+const int rG = 5; // Radius des Gitters
 const int dG = 2*rG + 1; // Durchmesser des Gitters
-const double mind = 0.5; // Mindestabstand der Konvergenzorte
+const double mind = 0.001; // Mindestabstand der Konvergenzorte
 int found = 0; // Flag, ob ein Konvergenzort gefunden wurde
 
 
 int main() {
+
     printf("--- Magnetpendelsimulation ---\n");
+    
+    /*
+        Berechne die Orte auf dem Einheitskreis iterativ.
+    */
+    for (int i = 0; i < s; i++) {
+        Magnetorte[i].x = sin(2 * i * M_PI/s);
+        Magnetorte[i].y = cos(2 * i * M_PI/s);
+    }
+
+    printf("--- Orte der Magneten ---\n");
+    for (int i = 0; i < s; i++) {
+        printf("Magnet %d: (%g, %g)\n", i, Magnetorte[i].x, Magnetorte[i].y);
+    }
 
     FILE* datei;
 
     /*
         Löse die Systemgleichungen mithilfe von leapfrog und schreibe in die Datei "../data/leapfrogsol.dat" (LeapFrog) oder "../data/velocityverletsol.dat" (Velocity Verlet). Wähle das Verfahren aus.
     */
+    printf("--- Verfahrenswahl ---\n");
     int Verfahren = 0;
-    printf("Wähle das Lösungsverfahren. Wähle (1) LeapFrog, (2) VelocityVerlet.\n");
-    // scanf("%d", &Verfahren);
+    printf("Wähle das Lösungsverfahren. Wähle (1) LeapFrog, (2) VelocityVerlet, oder (3) bilde Konvergenzbild.\n");
+    scanf("%d", &Verfahren);
 
-    Verfahren = 2;
+    // Verfahren = 2;
+
+    
 
     switch (Verfahren) {
         case 1: {
@@ -221,10 +235,10 @@ int main() {
                     for (int k = 1; k < n; k++) {
                         verletstep(k * h, &L, &pastL, F);
 
-                        printf("i = %d, j = %d, k = %d\n", i, j, k);
+                        // printf("i = %d, j = %d, k = %d\n", i, j, k);
 
                         for (int l = 0; l < s; l++) {
-                            if (pzNorm(L.u - Magnetorte[l]) < mind) {
+                            if (pNorm(L.u - Magnetorte[l]) < mind) {
                                 fprintf(datei, "%g\t%g\t%g\t%g\t%g\t%d\n", i*h, startL.u.x, startL.u.y, startL.du.x, startL.du.y, l);
                                 found = 1;
                                 break;
@@ -246,4 +260,5 @@ int main() {
     }
 
     fclose(datei);
+    return 0;
 }
