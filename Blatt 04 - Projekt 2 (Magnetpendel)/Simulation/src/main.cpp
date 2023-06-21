@@ -118,7 +118,7 @@ const double h = T/n;
 /*
     Initialisiere die Systemgleichungen. Definiere zunächst Magnetanzahl und Orte.
 */
-const int s = 3; // Anzahl der Magnete
+const int s = 6; // Anzahl der Magnete
 R2 Magnetorte[s]; // Orte der Magnete initialisieren
 
 const double m = 1; // Masse des Pendels
@@ -126,13 +126,14 @@ const double k = 0.5; // Federkonstante
 const double g = 0.2; // Dämpfungsparameter
 
 const double z = 0.25; // Abhebung von Magnettisch
+const double zq = pow(z, 2); // Quadrat der Abhebung
 
 #include "header/Systemgleichungen.hpp"
 
 /*
     Definiere das Gitter, auf welchem das Pendel simuliert werden soll, um die Konvergenzorte zu identifizieren.
 */
-const int G = 500;
+const int G = 50;
 const int rG = 5; // Radius des Gitters
 const int dG = 2*rG + 1; // Durchmesser des Gitters
 const double mind = 0.001; // Mindestabstand der Konvergenzorte

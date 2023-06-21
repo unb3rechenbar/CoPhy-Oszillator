@@ -1,6 +1,6 @@
 // Normdefinition
 double pzNorm(R2 v) {
-    return sqrt(pow(v.x,2) + pow(v.y, 2) + pow(z,2));
+    return sqrt(pow(v.x,2) + pow(v.y, 2) + zq);
 }
 
 double pNorm(R2 v) {
