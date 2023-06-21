@@ -10,4 +10,4 @@
 
 
 ### Blatt 04: Magnetpendel
-Abgabecommit: 470ec0f8436697ae54bc3f69f8fcc33c63adbfaf
+Abgabecommit: 92f790862b596888653eb9a1b0a0a5c274e69fc1
