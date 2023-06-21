@@ -10,7 +10,7 @@
 \usepackage{UniLaTeXPackage}
 
 \ihead{Tom Folgmann,\\David Jannack}
-\chead{TUTOR\\Blattsammlung}
+\chead{Daniel Kazenwadel\\Blatt 04}
 \ohead{\today}
 
 \begin{document}
@@ -65,7 +65,7 @@
     Wir verwenden die bestimmten Gleichungen gemäß Aufgabenteil (a) in Kombination mit dem Lösungsalgorithmus \enquote{Leap Frog} und \enquote{Velocity Verlet}. 
 
 \subaufgabe{}
-    Die Implementierung ist unter \href{https://github.com/unb3rechenbar/ComputerPhysik-I-Projekte.git}{Github} im Ordner \enquote{Blatt 04 - Projekt 2 (Magnetpendel)/Simulation} vorzufinden. Wir erzeugen dabei eine Tabelle mit den Spalten $t,u_x(t),u_y(t),u'_x(t),u'_y(t)$. 
+    \textbf{Die Implementierung ist unter $\to$\href{https://github.com/unb3rechenbar/ComputerPhysik-I-Projekte.git}{Github} im Ordner \enquote{Blatt 04 - Projekt 2 (Magnetpendel)/Simulation} unter dem im Readme angegebenen Abgabecommit vorzufinden}. Wir erzeugen dabei eine Tabelle mit den Spalten $t,u_x(t),u_y(t),u'_x(t),u'_y(t)$. 
 
 \subaufgabe{}
     Drei Beispieltrajektorien sind die folgenden. Wir verwenden $\gamma = 0.2$ und $k = 0.05$. 
@@ -132,6 +132,24 @@
     \[
         R:=\fdef{\nbra{\cos(\frac{n\cdot \pi}{s - 1}),\sin(\frac{n\cdot pi}{s - 1})}}{n\in\{0,\dots,s-1\}}.
     \]
-    
+    Wir erhalten für vier Magneten das folgende Bild:
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=7cm]{../Simulation/img/Farbbild-4Mag0502.png}
+        \caption{Farbplot der Konvergenzen bei $k = 0.05$, $\gamma = 0.2$ und $s = 4$.}
+    \end{figure}
+    Für zwei Magneten erhalten wir weiter das folgende Bild.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=7cm]{../Simulation/img/Farbbild-2Mag0502.png}
+        \caption{Farbplot der Konvergenzen bei $k = 0.05$, $\gamma = 0.2$ und $s = 2$.}
+    \end{figure}
+    Für ein Vielmagnetensystem mit beispielsweise $s = 6$ Instanzen wird das Bild jedoch lückenhaft, da in den gegebenen Bereichen $T = 200$, $h = 0.001$ und $r_\textit{min} = 0.001$ keine Lösungen gefunden werden können. Dies führt zu folgender Grafik.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=7cm]{../Simulation/img/Farbbild-6Mag0502.png}
+        \caption{Farbplot der Konvergenzen bei $k = 0.05$, $\gamma = 0.2$ und $s = 6$.}
+    \end{figure}
+    Hier könnte Parallelisierung der Prozesse und Optimierung des Codes mit längerer Laufzeit abhilfe schaffen - Bart gab sein bestes. 
 
 \end{document}

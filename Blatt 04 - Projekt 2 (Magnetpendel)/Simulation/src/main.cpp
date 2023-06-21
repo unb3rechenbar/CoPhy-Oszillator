@@ -118,7 +118,7 @@ const double h = T/n;
 /*
     Initialisiere die Systemgleichungen. Definiere zunächst Magnetanzahl und Orte.
 */
-const int s = 6; // Anzahl der Magnete
+const int s = 3; // Anzahl der Magnete
 R2 Magnetorte[s]; // Orte der Magnete initialisieren
 
 const double m = 1; // Masse des Pendels
