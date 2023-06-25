@@ -1,0 +1,42 @@
+\documentclass[
+    oneside,
+    ngerman,
+    footinclude=false,
+    captions=tableheading,
+    DIV=12
+]{scrartcl}
+
+
+\usepackage{UniLaTeXPackage}
+
+\ihead{Tom Folgmann,\\David Jannack}
+\chead{Daniel Kazenwadel\\Blatt 05}
+\ohead{\today}
+
+\begin{document}
+    \aufgabe{}
+        \subaufgabe{}
+            Zur Vorbereitung der Implementierung betrachten wir die gegebene \emph{Poisson Differentialgleichung} der Form $d^2\Phi = \mcf$ für $\Phi\in C^2(\R^3,\R)$ und $\mcf\in C^0(\R^3,\R)$. Für die gegebene Ladungsverteilung $\rho:=\big(\exp(-r)/(8\cdot\pi)\big)_{r\in\R_{>0}}$ können wir die DGL unter Drehsymmetrie reduzieren auf $d^2\varphi = f$, für angepasstes $\varphi\in C^2(\R)$ und $f\in C^0(\R)$. Mit der Identifikation $\varphi = g\circ \rho$ können wir dann die DGL aufstellen durch 
+            \[
+                d^2(g\circ \rho) = f.
+            \] 
+
+        \subaufgabe{}
+
+    \aufgabe{}
+        \subaufgabe{}
+            Wir stellen zunächst die Schrödingergleichung $Hf = \lambda\cdot f$ für $f\in C^2(\R)$ in die nötige Form $d^2f = \fdef{F(t,f(t))}_{t\in D_f}$ um. Wir finden 
+            \begin{align*}
+                \nbra{-\frac{\hbar^2}{2m}\cdot d^2}(f) + f\cdot V = \lambda\cdot f\iff d^2f = \frac{2m}{\hbar^2}\cdot\big(\lambda - V\big)\cdot f.
+            \end{align*}
+            Wir definieren also die durch $\N$ abgezählte rechte Seite als
+            \[
+                n\mapsto F_n:=\fdef{\frac{2m}{\hbar^2}\cdot\big(\lambda_n - V(x)\big)\cdot f_n(x)}{t\in D_f},\quad V:=\fdef{\begin{cases}
+                    x & x\geq 0\\
+                    \infty & \text{sonst}
+                \end{cases}}{x\in D_f}.
+            \]
+            Wir setzen $D_f:=\R$ und implementieren die rechte Seite.
+            
+
+\end{document}
