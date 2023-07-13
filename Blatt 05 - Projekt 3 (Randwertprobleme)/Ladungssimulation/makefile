@@ -1,5 +1,5 @@
 CC = g++
-CFLAGS = -g -Wall
+CFLAGS = -g -Wall -I$(CPP_ALGLIB_HEADER) -L$(DYLD_LIBRARY_PATH) -lalgo
 SRC = src
 OBJ = obj
 SRCS = $(wildcard $(SRC)/*.cpp)
