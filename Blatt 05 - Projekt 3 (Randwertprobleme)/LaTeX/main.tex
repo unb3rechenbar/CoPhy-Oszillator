@@ -16,11 +16,29 @@
 \begin{document}
     \aufgabe{}
         \subaufgabe{}
-            Zur Vorbereitung der Implementierung betrachten wir die gegebene \emph{Poisson Differentialgleichung} der Form $d^2\Phi = \mcf$ für $\Phi\in C^2(\R^3,\R)$ und $\mcf\in C^0(\R^3,\R)$. Für die gegebene Ladungsverteilung $\rho:=\big(\exp(-r)/(8\cdot\pi)\big)_{r\in\R_{>0}}$ können wir die DGL unter Drehsymmetrie reduzieren auf $d^2\varphi = f$, für angepasstes $\varphi\in C^2(\R)$ und $f\in C^0(\R)$. Mit der Identifikation $\varphi = g\circ \rho$ können wir dann die DGL aufstellen durch 
+            Zur Vorbereitung der Implementierung betrachten wir die gegebene \emph{Poisson Differentialgleichung} der Form $d^2\Phi = \mcf$ für $\Phi\in C^2(\R^3,\R)$ und $\mcf\in C^0(\R^3,\R)$. Für die gegebene Ladungsverteilung $\rho:=\big(\exp(-r)/(8\cdot\pi)\big)_{r\in\R_{>0}}$ können wir die DGL unter Drehsymmetrie reduzieren auf $d^2\varphi = f$, für angepasstes $\varphi\in C^2(\R)$ und $f\in C^0(\R)$. Mit der Definition $f := \big(-r\cdot \rho(r) / \epsilon\big)_{(r,x)\in\R\times\R}$ für $\epsilon\in\R^\times$ und können wir dann eine rechte Seite $F$ definieren durch 
             \[
-                d^2(g\circ \rho) = f.
+                d^2(u)(r)(1) = u''(r) = \ubra{(f\circ (\id_\R,u))(r)}{F(r,u(r))}.
             \] 
+            Daraus ergibt sich also die nicht autonome rechte Seite $F(t,x) = -\rho(t)\cdot t / \epsilon$. Da die Numerov Methode auf DGL der Form $d^2 u + (k^2\cdot u) = f$ angewendet wird, müssen können wir $k = 0$ voraussetzen und haben damit die passende Form: 
+            \[
+                d^2(u)(r)(1) = u''(r) = F(r,u(r)).
+            \]
+            Durch einen glücklichen Umstand fallen die Definitionen des $F_\textit{Vl}$ aus der Vorlesung mit unserem $F$ durch den Zusammenhang $F_\textit{Vl}: r\mapsto F(r,u(r))$ Dadurch fallen entscheidende Terme in der Berechnung des Folgegliedes von $F_\textit{Vl}(r) = F(r,u(r))$ weg und wir finden 
+            \[
+                u(t_{i+1}) = \frac{h^2\cdot (F(r_{i+1},u(r_{i+1})) + 10\cdot F(r_i,u(r_i)) + F(r_{i-1},u(r_{i-1})))/12 + 2\cdot u(r_i) - u(r_{i-1})}{1} + \mcO(h^6).
+            \]
+            Wir erkennen also, daß wir in der Programmierung das Tupel $(u(r_{i}),u(r_{i-1}))$ zu jeder Berechnung speichern müssen. 
 
+            \subsubsection*{Analytische Lösung}
+                Die analytische Lösung des beschriebenen DGPs ist gegeben durch 
+                \[
+                    v := \nbra{-\frac{\exp(-r)}{4\cdot\pi\cdot\epsilon}\cdot\nbra{1 + \frac{r}{2}} + C_1\cdot r + C_2}_{r\in\R_{>0}}.
+                \]
+                Mit den Randbedingungen $\lim_{r\to\infty}v(r) = 0$ und $\lim_{r\to 0} v(r) = 1/(4\pi\epsilon)$ folgern wir für die Konstanten $C_1$ und $C_2$ die Werte $C_1 = 0$ und $C_2 = 1/(4\pi\epsilon)$. Damit ergibt sich die analytische Lösung zu
+                \[
+                    v(r) = -\frac{\exp(-r)}{4\cdot\pi\cdot\epsilon}\cdot\nbra{1 + \frac{r}{2}} + \frac{1}{4\pi\epsilon}.
+                \]
         \subaufgabe{}
 
     \aufgabe{}
