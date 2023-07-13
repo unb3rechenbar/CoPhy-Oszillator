@@ -12,4 +12,6 @@ double V(double x) {
 /*
     Definiere die rechte Seite. 
 */
-double F(int n, double x,)
+double k(double t, double S) {
+    return (2 * M_CONST / pow(H_CONST, 2)) * (S - V(t));
+}

@@ -4,8 +4,8 @@
 /*
     Initialisiere das Numerov Verfahren. 
 */
-const double T = 50;
-const double wh = 0.01;
+const double T = 15;
+const double wh = 1;
 const int n = (int) T/wh;
 const double h = T/n;
 
@@ -17,7 +17,7 @@ const int s = 2; // Zu speichernde Schritte in die Vergangenheit
 /*
     Initialisiere die Systemgleichungen. 
 */
-const double eps = 0.1; 
+const double eps = 0.1;
 #include "header/Systemgleichungen.hpp"
 
 /*
@@ -30,7 +30,15 @@ double v(double t) {
 
 
 int main() {
-    printf("\n--- Ladungssimulation ---\n\n");
+    printf("\n--- Ladungssimulation ---\n\n -----------------------\n");
+
+    printf("| Konfiguration:\t|\n");
+    printf("|\t T = %g\t\t|\n", T);
+    printf("|\t h = %g\t|\n", h);
+    printf("|\t n = %d\t|\n", n);
+    printf("|\t s = %d\t\t|\n", s);
+    printf("|\t eps = %g\t|\n -----------------------\n\n", eps);
+
 
     FILE* datei;
     datei = fopen("/tmp/data/numerov.dat", "w");
@@ -44,17 +52,22 @@ int main() {
         v(T)
     };
 
-    printf("-> Startwerte: u(T) = %g, u(T-h) = %g\n", L.u[1], L.u[0]);
+    printf(" -------------------------------\n");
+    printf("| Startwerte:\t\t\t|\n");
+    printf("|\t u(T) = %g\t|\n", L.u[1]);
+    printf("|\t u(T-h) = %g\t|\n -------------------------------\n\n", L.u[0]);
 
-    printf("-> Start des Numerov Verfahrens\n");
+    printf("Programmfortschritt:\n");;
+
+    printf("\t-> Start des Numerov Verfahrens\n");
     for (int i = 2; i < n; i++) {
         numerovstep(T - i * h, &L, &F);
-        fprintf(datei, "%g %g %g\n", T - i * h, L.u[0], v(T - i * h));
+        fprintf(datei, "%g %g %g %g\n", T - i * h, L.u[0], v(T - i * h), fabs(L.u[0] - v(T - i * h)));
     }
-    printf("-> Ende des Numerov Verfahrens\n");
+    printf("\t-> Ende des Numerov Verfahrens\n");
 
     fclose(datei);
-    printf("-> Daten in /tmp/data/numerov.dat geschrieben\n");
+    printf("\t-> Daten in /tmp/data/numerov.dat geschrieben\n");
     printf("\n--- Ende der Simulation ---\n\n");
     return 0;
 }

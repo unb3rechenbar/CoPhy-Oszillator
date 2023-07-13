@@ -55,6 +55,20 @@
                 \end{cases}}{x\in D_f}.
             \]
             Wir setzen $D_f:=\R$ und implementieren die rechte Seite.
+
+    \aufgabe{}
+        Als Lösung einer gewönlichen Differentialgleichung erster Ordnung können wir durch Integration eine Funktion definieren, welche uns zu beliebigem Startwert $S\in\R^2$ eine Lösung $u$ liefert. Diese Funktion ist gegeben durch
+        \begin{align*}
+            A^{-1}_{t_0,F}:=\bigl(V(t_0,S,F)\bigr)_{S\in\R^2},
+        \end{align*}
+        wobei wir $V$ als Verfahrensfunktion zur Lösung eines AWPs der Form $u''(t) + k^2\cdot u(t) = f(t)$, $u(t_0) = S_1$ und $u'(t_0) = S_2$ annehmen. Hier wird später das Numerov Verfahren verwendet werden. Die Ausgabe dieser Funktion $A^{-1}_{t_0,F}(S) $ nehmen wir nun als Eingabe einer zweiten Funktion $B:\mcL\to\R^q$ (wir nehmen direkt $d = q$ an), welche \enquote{testet}, wie gut dieses Ergebnis den gesetzten Rahmenbedingungen entspricht: Liefert sie den Wert $0$, so ist die Eingabelösung exakt gewesen. Wir definieren also als Bedingungsfunktion
+        \[
+            B:=\fdef{u''(t) + \frac{2\cdot m}{\hbar^2}\cdot(S - V(t))\cdot u(t)}{(u,t,S)\in C^2(\R)\times\R\times\R^2}.
+        \]
+        Das verwendete Potential $V$ ist dabei definiert durch $V := \bigl(\mbbEins_{\R_{<0}}(x)\cdot\infty + \mbbEins_{\R_{\geq 0}}(x)\cdot x\bigr)_{x\in\R}$. Damit haben wir eine Funktion $T$ der Form 
+        \[
+            T:=\fdef{\bigl(B\circ (A^{-1}_{t_0,F}(S),t_0,S)\bigr)(S,(t,t_0),F)}_{(S,(t,t_0),F)\in\R^2\times\R^2\times C^0(\I,\R)}.
+        \]
             
 
 \end{document}
