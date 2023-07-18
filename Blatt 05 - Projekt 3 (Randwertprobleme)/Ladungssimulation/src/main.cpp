@@ -2,12 +2,18 @@
 #include <math.h>
 
 /*
+    Implementiere die R2 Struktur.
+*/
+#include "header/R2.hpp"
+
+/*
     Initialisiere das Numerov Verfahren. 
 */
 const double T = 15;
 const double wh = 1;
 const int n = (int) T/wh;
 const double h = T/n;
+double t_i = T;
 
 const int s = 2; // Zu speichernde Schritte in die Vergangenheit
 
@@ -19,6 +25,12 @@ const int s = 2; // Zu speichernde Schritte in die Vergangenheit
 */
 const double eps = 0.1;
 #include "header/Systemgleichungen.hpp"
+
+/*
+    Initialisiere die Schrittweitensteuerung.
+*/
+// #include "header/Schrittweitensteuerung.hpp"
+
 
 /*
     Definiere die analytische Lösung.
@@ -61,7 +73,12 @@ int main() {
 
     printf("\t-> Start des Numerov Verfahrens\n");
     for (int i = 2; i < n; i++) {
-        numerovstep(T - i * h, &L, &F);
+        // if (i =! 0) {
+        //     adapt_h(t_i, &h, &L, &F);
+        // 
+        //     t_i -= h;
+        // }
+        numerovstep(t_i, &L, &dF);
         fprintf(datei, "%g %g %g %g\n", T - i * h, L.u[0], v(T - i * h), fabs(L.u[0] - v(T - i * h)));
     }
     printf("\t-> Ende des Numerov Verfahrens\n");

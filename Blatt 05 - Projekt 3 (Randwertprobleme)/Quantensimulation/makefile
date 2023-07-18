@@ -1,7 +1,7 @@
 # Kompiler Informationen
 CC = g++
 STD_CFLAGS = -g -Wall 		# Standardflags
-OPT_CFLAGS = -O3			# Optimierungsflags
+OPT_CFLAGS = 			# Optimierungsflags
 
 # Projektabhängige Flags
 PRJ_CFLAGS = 

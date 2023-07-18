@@ -2,10 +2,10 @@
     Definiere das Potential. 
 */
 double V(double x) {
-    if (x <= 0) {
+    if (x >= 0) {
         return x;
     } else {
-        return inf;
+        return INFINITY;
     }
 };
 
