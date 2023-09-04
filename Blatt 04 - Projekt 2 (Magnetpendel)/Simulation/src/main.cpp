@@ -85,7 +85,7 @@ double scpr(R2 a, R2 b) {
 
 
 /*
-    Definiere die Lösungsstruktur. Sie ist dabei von der Form (u(t),u'(t))\in(\R^2)^2. 
+    Definiere die Lösungsstruktur. Sie ist dabei von der Form (u(t),u'(t))\in(\R^2)^2.
 */
 typedef struct {
     R2 u;
@@ -130,17 +130,38 @@ const double zq = pow(z, 2); // Quadrat der Abhebung
 
 #include "header/Systemgleichungen.hpp"
 
-/*
-    Definiere das Gitter, auf welchem das Pendel simuliert werden soll, um die Konvergenzorte zu identifizieren.
-*/
-const int G = 50;
-const int rG = 5; // Radius des Gitters
-const int dG = 2*rG + 1; // Durchmesser des Gitters
-const double mind = 0.001; // Mindestabstand der Konvergenzorte
 int found = 0; // Flag, ob ein Konvergenzort gefunden wurde
 
 
-int main() {
+int main(int argc, char* argv[]) {
+    switch (argc) {
+        case 1: {
+            #define start -5
+            #define stop 5
+
+            break;
+        } 
+        case 5: {
+            /*
+                Definiere das Gitter, auf welchem das Pendel simuliert werden soll, um die Konvergenzorte zu identifizieren.
+            */
+            #define G = atoi(argv[1])
+            #define rG = atoi(argv[2]) // Radius des Gitters
+
+            #define start atoi(argv[3]);      // starte bei x = start
+            #define stop atoi(argv[4]);       // stoppe bei x = stop
+
+            const int dG = 2*rG + 1; // Kantenlänge des Gitters
+            const double mind = 0.001; // Mindestabstand der Konvergenzorte
+            
+            break;
+        }
+        default: {
+            printf("Falsche Anzahl an Argumenten.\n");
+            return 1;
+        }
+    }
+
 
     printf("--- Magnetpendelsimulation ---\n");
     
@@ -215,11 +236,11 @@ int main() {
                 Nutze hier explizit keine bedingte Schleife, sodaß möglicherweise rausdriftende Lösungen nicht zu Endlosschleifen führen.
             */
 
-            for (int i = 0; i < G - 1; i++) {
-                for (int j = 0; j < G - 1; j++) {
+            for (int i = 0; i < stop; i++) {
+                for (int j = 0; j < stop; j++) {
                     // Ordne Lösungsgitter zu
-                    L.u.x = (double)dG / G * i - rG;
-                    L.u.y = (double)dG / G * j - rG;
+                    L.u.x = (double)dG / G * i - start;
+                    L.u.y = (double)dG / G * j - start;
 
                     L.du.x = 0.0;
                     L.du.y = 0.0;
@@ -236,7 +257,7 @@ int main() {
                     for (int k = 1; k < n; k++) {
                         verletstep(k * h, &L, &pastL, F);
 
-                        // printf("i = %d, j = %d, k = %d\n", i, j, k);
+                        printf("i = %d, j = %d, k = %d\n", i, j, k);
 
                         for (int l = 0; l < s; l++) {
                             if (pNorm(L.u - Magnetorte[l]) < mind) {

@@ -1,0 +1,45 @@
+\documentclass[
+    oneside,
+    ngerman,
+    footinclude=false,
+    captions=tableheading,
+    DIV=12
+]{scrartcl}
+
+
+\usepackage{UniLaTeXPackage}
+
+\ihead{Tom Folgmann,\\David Jannack}
+\chead{TUTOR\\Blattsammlung}
+\ohead{\today}
+
+\begin{document}
+    \aufgabe{}
+        \subaufgabe{}
+			Die Diffusionsgleichung beschreibt den Verlauf einer zweifach stetig total differenzierbaren Funktion $u:\R\times\R\to\R$ unter Verwendung ihrer Ableitungen. Wir sind hier an der \emph{Zeitentwicklung} interessiert, sodaß wir ein DGP der Form $v(x)'(t)=F(t,v'(x)(t),v''(x)(t))$ für die Umdefinition $v(x)(t):=u(t,x)$ suchen. \\
+
+			Wir stellen zunächst die Theorie des Problems in Form einer rechten Seite $F:\R^2\times\R^3\to\R$ dar durch die Funktion
+            \[
+                F\bigl((t,x),u(t,x),\partial_x u(t,x),\partial_x^2 u(t,x)\bigr) = D\cdot \partial_x^2 u(t,x)
+            \]
+			mit $F((t,x),u(t,x),\partial_x u(t,x),\partial_x^2u(t,x)) = D\cdot\partial_x^2u(t,x)$. 
+
+			In einer Diskretisierung wählen wir zur Darstellung der zweiten Ableitung $v''(x)(t)$ die \emph{zentrale Ableitungsmethode} der Form $(t,x)\mapsto \bigl(v(x + \delta x)(t) - 2\cdot v(x)(t) + v(x - \delta x)(t)\bigr)/(\delta x)^2$, wobei wir hier nur bereits bekannte Funktionsauswertungen $u(x)(t)$ verwenden (entweder durch die Randbedingungen gegeben, oder bereits durch einen Zeitschritt berechnet) und mit $\delta x$ bzw. $\delta t$ die jeweiligen Iterationsschrittgrößen bezeichnen. Damit lautet dann für die diskrete Form des DGPs die Beziehung
+			\[
+				\frac{\delta u(x)(t)}{\delta t} = D\cdot\frac{v(x + dx)(t) - 2\cdot v(x)(t) + v(x - dx)(t)}{(\delta x)^2}.
+			\]
+			Umstellen liefert uns eine explizite Form der Berechnung einer Iteration von $v(x)$ um $\delta t$ nach $\delta v(x)(t)$. Diskrete Integration liefert nach Multiplikation mit $\delta t$ das Ergebnis
+			\[
+				v(x)(t + \delta t) = v(x)(t) + \delta t\cdot D\cdot\frac{v(x + dx)(t) - 2\cdot v(x)(t) + v(x - dx)(t)}{(\delta x)^2}.
+			\]
+			Die zeitlich bei Null liegende Randbedingung für unser DGP ist ferner gegeben durch eine Gaußfunktion der Form 
+			\[
+				w:x\mapsto\exp(-(x - x_0)^2/(2\cdot\sigma^2)),
+			\]
+			wobei $x_0 := 0.5$ und $\sigma:=0.02$ gegeben sind. Für den initialen Iterationsschritt gilt dementsprechend
+			\[
+				v(x)(\delta t) = w(x) + \delta t\cdot D\cdot\frac{w(x + \delta x) - 2\cdot w(x) + w(x - \delta x)}{(\delta x)^2}.
+			\]
+						
+
+\end{document}
