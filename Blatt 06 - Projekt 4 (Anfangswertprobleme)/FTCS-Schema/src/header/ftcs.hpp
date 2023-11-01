@@ -1,5 +1,5 @@
 void ftcs(double t, Lsng* L, FILE** file) {
-	fprintf(*file, "u(%g,0)=%g  ", t, L->ux[0]);
+	printf("u(%g,0)=%g  ", t, L->ux[0]);
 
 	for (int i = 1; i < nx - 1; i++) {
 		// Werte F aus und erzeuge damit neues delta v(x) im Zeitargument
@@ -9,10 +9,10 @@ void ftcs(double t, Lsng* L, FILE** file) {
 		L->ux[i] += dt * L->dut;
 
 		// Gibt die aktuelle Position aus
-		fprintf(*file, "u(%g,%g)=%g  ", t, i * dx, L->ux[i]);
+		printf("u(%g,%g)=%g  ", t, i * dx, L->ux[i]);
 	}
 
-	fprintf(*file, "u(%g,%g)=%g\n", t, nx * dx, L->ux[nx]);
+	printf("u(%g,%g)=%g\n", t, nx * dx, L->ux[nx]);
 
 	L->ux[0] = 0.0;
 	L->ux[nt] = 0.0;
